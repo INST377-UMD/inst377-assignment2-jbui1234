@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INST377 - Home</title>
+  <link rel="stylesheet" href="home.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>INST377 - Activities</h1>
+    <nav>
+      <ul class="navbar">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="stocks.html">Stocks</a></li>
+        <li><a href="dogs.html">Dogs</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>These are some different activities we can try!</h2>
+
+    <div class="button-container">
+        <button class="button-78" onclick="location.href='stocks.html'">Stocks</button>
+        <button class="button-78" onclick="location.href='dogs.html'">Dogs</button>
+      </div>      
+
+    <div class="quote-box">
+      <h3>Quote of the Page Load</h3>
+      <p id="quote"></p>
+    </div>
+  </main>
+
+  <div class="audio-controls">
+    <h3>Voice Navigation Commands</h3>
+    <p>Ensure your microphone is enabled and say:</p>
+    <ul>
+      <li><strong>Hello</strong> - Says "Hello World"</li>
+      <li><strong>Change the color to [color]</strong> -  Changes background color</li>
+      <li><strong>Navigate to [home/stocks/dogs]</strong> - Opens the page</li>
+    </ul>
+    <button onclick="startAnnyang()">Turn On Listening</button>
+    <button onclick="stopAnnyang()">Turn Off Listening</button>
+  </div>
+
+  <script src="home.js"></script>
+</body>
+</html>
