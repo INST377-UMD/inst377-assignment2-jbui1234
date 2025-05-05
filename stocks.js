@@ -32,7 +32,7 @@ function fetchStockData(ticker, days) {
 function drawChart(ticker, labels, prices) {
   const chartSection = document.querySelector('.chart-section');
   chartSection.classList.remove('hidden');
-  chartSection.style.display = "block"; // explicitly reveal it
+  chartSection.style.display = "block"; 
 
   if (chart) chart.destroy();
   chart = new Chart(ctx, {
@@ -55,8 +55,6 @@ function drawChart(ticker, labels, prices) {
     },
   });
 }
-
-
 
 fetch("https://tradestie.com/api/v1/apps/reddit?date=2022-04-03")
   .then((res) => res.json())
