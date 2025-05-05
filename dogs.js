@@ -88,7 +88,7 @@ function startAnnyang() {
     const commands = {
       "hello": () => alert("Hello World"),
       "change the color to *color": (color) => {
-        document.body.style.backgroundColor = color;
+        document.body.style.background = color;
       },
       "navigate to *page": (page) => {
         const dest = page.toLowerCase();

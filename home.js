@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const commands = {
         'hello': () => alert("Hello World"),
         'change the color to *color': (color) => {
-          document.body.style.backgroundColor = color;
+          document.body.style.background = color;
         },
         'navigate to *page': (page) => {
           const p = page.toLowerCase();
