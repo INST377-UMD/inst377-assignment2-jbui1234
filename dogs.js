@@ -27,21 +27,47 @@ function loadCarouselImages() {
     });
 }
 
-function loadDogBreeds() {
-  fetch("https://dogapi.dog/api/v2/breeds")
-    .then((res) => res.json())
-    .then((data) => {
-      const container = document.getElementById("breed-buttons");
-      data.data.forEach((breed) => {
-        const btn = document.createElement("button");
-        btn.textContent = breed.attributes.name;
-        btn.classList.add("dog-breed-btn", "button-56");
-        btn.setAttribute("data-id", breed.id);
-        btn.setAttribute("data-name", breed.attributes.name);
-        btn.addEventListener("click", () => showBreedDetails(breed.id));
-        container.appendChild(btn);
-      });
-    });
+/* I was trying to figure out why it only loaded the first alphabetical dogs
+and then I figured out it only loaded first page so I made a randomizer and used
+all pages of dogs in the api to shuffle, load times are affected this */
+async function loadDogBreeds() {
+  const container = document.getElementById("breed-buttons");
+  const loading = document.getElementById("loading");
+
+  loading.style.display = "block";   
+  container.innerHTML = "";
+
+  let allBreeds = [];
+  let page = 1;
+  let hasNextPage = true;
+
+  while (hasNextPage) {
+    const res = await fetch(`https://dogapi.dog/api/v2/breeds?page[number]=${page}&page[limit]=25`);
+    const data = await res.json();
+    allBreeds = allBreeds.concat(data.data);
+    hasNextPage = !!data.links.next;
+    page++;
+  }
+
+  const selectedIndices = new Set();
+  while (selectedIndices.size < 10) {
+    const randIndex = Math.floor(Math.random() * allBreeds.length);
+    selectedIndices.add(randIndex);
+  }
+
+  const selectedBreeds = Array.from(selectedIndices).map(i => allBreeds[i]);
+
+  selectedBreeds.forEach((breed) => {
+    const btn = document.createElement("button");
+    btn.textContent = breed.attributes.name;
+    btn.classList.add("dog-breed-btn", "button-56");
+    btn.setAttribute("data-id", breed.id);
+    btn.setAttribute("data-name", breed.attributes.name);
+    btn.addEventListener("click", () => showBreedDetails(breed.id));
+    container.appendChild(btn);
+  });
+
+  loading.style.display = "none";     
 }
 
 function showBreedDetails(id) {
