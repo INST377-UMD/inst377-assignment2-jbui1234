@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INST377 - Dogs</title>
+  <link rel="stylesheet" href="dogs.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/simple-slider@1.0.0/dist/simpleslider.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>INST377 - Doggos</h1>
+    <nav>
+      <ul class="navbar">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="stocks.html">Stocks</a></li>
+        <li><a href="dogs.html">Dogs</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Doggos! 🐶</h2>
+  
+    <div class="carousel-container">
+      <div id="dogCarousel" class="slider"></div>
+    </div>
+  
+    <div id="breed-buttons" class="button-container"></div>
+  
+    <div id="breed-info" class="breed-info hidden">
+      <h3>Name: <span id="breed-name"></span></h3>
+      <p><strong>Description:</strong> <span id="breed-description"></span></p>
+      <p>Min Life: <span id="breed-life-min"></span></p>
+      <p>Max Life: <span id="breed-life-max"></span></p>
+    </div>
+  </main>
+  
+
+  <div class="audio-controls">
+    <h3>Voice Navigation Commands</h3>
+    <ul>
+      <li><strong>Hello</strong> → Alerts "Hello World"</li>
+      <li><strong>Change the color to [color]</strong> → Changes background color</li>
+      <li><strong>Navigate to [home/stocks/dogs]</strong> → Opens the page</li>
+      <li><strong>Load Dog Breed [name]</strong> → Opens info for selected breed</li>
+    </ul>
+    <button onclick="startAnnyang()">Turn On Listening</button>
+    <button onclick="stopAnnyang()">Turn Off Listening</button>
+  </div>
+
+  <script src="dogs.js"></script>
+</body>
+</html>
